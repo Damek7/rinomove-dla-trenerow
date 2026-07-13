@@ -9,12 +9,11 @@ test('public copy does not label the offer as premium', () => {
   assert.doesNotMatch(html, /premium/i)
 })
 
-test('hero names the concrete product and starting disciplines', () => {
+test('hero names the concrete product', () => {
   assert.match(html, /Budujemy jedno miejsce na profil, terminy, rezerwacje i płatności\./)
-  assert.match(html, /Zaczynamy od trenerów tenisa i boksu w Warszawie\./)
 })
 
-test('future capabilities are presented as pilot work', () => {
+test('future capabilities are presented as planned work', () => {
   assert.match(html, /Budujemy profil, na którym klient pozna ofertę, cenę, lokalizację i dostępne terminy/)
   assert.match(html, /Opinię będzie mógł wystawić wyłącznie klient/)
   assert.match(html, /mają działać razem/)
@@ -22,7 +21,14 @@ test('future capabilities are presented as pilot work', () => {
 })
 
 test('free period begins with profile launch', () => {
-  assert.match(html, /Bezpłatny okres zaczyna się w dniu uruchomienia profilu w pilotażu\./)
+  assert.match(html, /Bezpłatny okres zaczyna się w dniu uruchomienia profilu\./)
+})
+
+test('public copy does not reveal launch location, disciplines, or stage', () => {
+  assert.doesNotMatch(html, /warszaw/i)
+  assert.doesNotMatch(html, /pilotaż/i)
+  assert.doesNotMatch(html, /Zaczynamy od trenerów tenisa i boksu/i)
+  assert.doesNotMatch(html, /na jakim etapie jesteśmy/i)
 })
 
 test('manual Instagram handoff is named accurately', () => {
